@@ -1,6 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                            <form action="" method="POST" role="form">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="field">
+                                        <label class="label" for="{{ field.subject.id_for_label }}">{{ field.label }}</label>
+                                        <div class="control">
+                        
+                                            <textarea class="input" placeholder="{{ field.html_name }}" name="{{ field.html_name }}"></textarea>
+                                            {{ field.errors }}
+                                        </div>
+                                    </div>
+
+
+
+                                {% endfor %}
+                                <p class="control">
+                                    <button class="button is-success" type="Submit">
+                                        Submit
+                                    </button>
+                                </p>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
 <div class="container post-container">
 
