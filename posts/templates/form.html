@@ -1,9 +1,17 @@
 <form action="" method="POST" role="form">
     {% csrf_token %}
     {% for field in form %}
-        <label for="{{ field.subject.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {{ field.errors }}
+        <div class="field">
+            <label class="label" for="{{ field.subject.id_for_label }}">{{ field.label }}</label>
+            <div class="control">
+                
+                <input class="input" type="text" placeholder="{{ field.html_name }}" name="{{ field.html_name }}">
+                {{ field.errors }}
+            </div>
+        </div>
+
+        
+        
     {% endfor %}
     <button type="Submit">Submit</button>
 </form>

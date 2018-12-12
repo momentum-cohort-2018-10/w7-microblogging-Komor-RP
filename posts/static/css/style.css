@@ -1,3 +1,25 @@
 body {
     background-color: #ececec;
+    padding: 15px;
+    min-height: 100vh;
+}
+header {
+    margin-bottom: 60px;
+}
+
+.post-container{
+    background-color: #fff;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px 50px;
+    box-shadow: 2px 2px 2px #e1e1e1, -2px -2px 2px #e1e1e1;
+    border-radius: 5px;
+}
+
+.post-container .is-hoverable button {
+    border: none;
+    padding: 0;
+}
+.post-container .is-hoverable a.button {
+
 }

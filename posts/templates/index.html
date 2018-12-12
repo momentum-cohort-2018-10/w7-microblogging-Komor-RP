@@ -1,1 +1,54 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container post-container">
+
+            <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <h2 class="is-size-4">Username</h2>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <span><p>Username</p><a class="button" href="">Follow</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <p>Oct 5</p>
+            <p>{% lorem 1 b random %}</p>
+            <div class="controls">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <div class="container post-container">
+
+            <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <h2 class="is-size-4">Username</h2>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <span><p>Username</p><a class="button" href="">Follow</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <p>Oct 5</p>
+            <p>{% lorem 1 b random %}</p>
+            <div class="controls">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+{% endblock content %}
