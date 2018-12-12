@@ -1,0 +1,9 @@
+<form action="" method="POST" role="form">
+    {% csrf_token %}
+    {% for field in form %}
+        <label for="{{ field.subject.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {{ field.errors }}
+    {% endfor %}
+    <button type="Submit">Submit</button>
+</form>
