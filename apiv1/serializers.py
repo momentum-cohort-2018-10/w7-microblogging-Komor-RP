@@ -3,14 +3,14 @@ from posts.models import Post, User, Like
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    post_set = serializers.HyperlinkedRelatedField(many=True,
-                                                   view_name='post-detail',
-                                                   read_only=True)
+    posts = serializers.HyperlinkedRelatedField(many=True,
+                                                view_name='post-detail',
+                                                read_only=True)
     # follow = serializers.SerializerMethodField('get_follow_names')
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'follow', 'post_set')
+        fields = ('id', 'username', 'follow', 'posts')
         lookup_field = 'username'
 
     def get_follow_names(self, user):

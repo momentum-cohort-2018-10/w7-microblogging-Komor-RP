@@ -19,7 +19,10 @@ class Timestamp(models.Model):
 
 class Post(Timestamp):
     text = models.TextField(max_length=280, validators=[min_post_length])
-    poster = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    poster = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               null=True,
+                               related_name='posts')
 
 
 class Like(Timestamp):
