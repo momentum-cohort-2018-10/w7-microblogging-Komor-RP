@@ -4,7 +4,12 @@ from posts.validation import min_post_length
 
 
 class User(AbstractUser):
-    follow = models.ManyToManyField("self", symmetrical=False)
+    users_followed = models.ManyToManyField(
+        to='User',
+        through='Follow',
+        through_fields=('following_user', 'followed_user'),
+        related_name='follows'
+    )
 
     USERNAME_FIELD = 'username'
 
@@ -15,6 +20,15 @@ class Timestamp(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Follow(Timestamp):
+    following_user = models.ForeignKey(User,
+                                       on_delete=models.CASCADE,
+                                       related_name='follows_from')
+    followed_user = models.ForeignKey(User,
+                                      on_delete=models.CASCADE,
+                                      related_name='follows_to')
 
 
 class Post(Timestamp):
