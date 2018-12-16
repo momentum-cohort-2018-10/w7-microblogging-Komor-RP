@@ -4,7 +4,7 @@ from posts.validation import min_post_length
 
 
 class User(AbstractUser):
-    follow = models.ManyToManyField("self")
+    follow = models.ManyToManyField("self", symmetrical=False)
 
     USERNAME_FIELD = 'username'
 
