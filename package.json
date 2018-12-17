@@ -4,7 +4,8 @@
   "description": "## Description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development ./w7-microblogging-Komor-RP/frontend-quack/src/index.js --output ./w7-microblogging-Komor-RP/frontend-quack/static/frontend-quack/main.js",
+    "build": "webpack --mode production ./w7-microblogging-Komor-RP/frontend-quack/src/index.js --output ./w7-microblogging-Komor-RP/frontend-quack/static/frontend-quack/main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,20 @@
   "bugs": {
     "url": "https://github.com/momentum-cohort-2018-10/w7-microblogging-Komor-RP/issues"
   },
-  "homepage": "https://github.com/momentum-cohort-2018-10/w7-microblogging-Komor-RP#readme"
+  "homepage": "https://github.com/momentum-cohort-2018-10/w7-microblogging-Komor-RP#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }
