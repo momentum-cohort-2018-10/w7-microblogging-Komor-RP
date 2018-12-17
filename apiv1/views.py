@@ -1,10 +1,14 @@
 from posts.models import Post, User, Like, Follow
-from apiv1.serializers import PostSerializer, UserSerializer, LikeSerializer, FollowSerializer
+from apiv1.serializers import (
+    PostSerializer,
+    UserSerializer,
+    LikeSerializer,
+    FollowSerializer)
 from rest_framework.response import Response
 from rest_framework import status, mixins, generics
 from rest_framework.views import APIView
 from rest_framework import permissions
-from apiv1.permissions import IsOwnerOrReadOnly
+from apiv1.permissions import IsOwnerOrReadOnly, IsLikerOrReadOnly
 from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
 from rest_framework import viewsets
@@ -30,9 +34,22 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'pk'
 
 
-class LikeViewSet(viewsets.ModelViewSet):
+class LikeList(generics.ListCreateAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+    permission_classes = (IsLikerOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class FollowList(generics.ListCreateAPIView):

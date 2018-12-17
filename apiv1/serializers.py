@@ -35,6 +35,8 @@ class PostSerializer(serializers.ModelSerializer):
                                                      format='html')
     poster = UserSerializer(read_only=True)
 
+
+
     class Meta:
         model = Post
         fields = ('text', 'poster', 'post_link')
@@ -47,6 +49,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class LikeSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.ReadOnlyField(source='user.username')
     like_link = serializers.HyperlinkedIdentityField(view_name='like-detail',
                                                      format='html')
 
